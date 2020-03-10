@@ -1,4 +1,4 @@
-### WebRTC
+### WebRTC & server(vue.js, node.js)
 내가 이해할정도만 정리.. 
 삭제된 부분이 많다.. 
 

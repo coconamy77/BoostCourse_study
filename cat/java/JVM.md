@@ -29,7 +29,15 @@
 
 
 
-1. 
+## Garbage Collection
+
+- Garbage Collector(GC)는 Heap 메모리에서 참조되지 않는 객체를 식별하여 메모리에서 삭제하는 기능이다. 
+
+### GC Steps
+
+1. Marking
+2. Normal Deletion
+3. Deletion with Compacting
 
 
 

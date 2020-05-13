@@ -36,20 +36,45 @@
 ### GC Steps
 
 1. Marking
+
+   - 메모리 중 어떤 부분이 사용되지 않고 있는지 체크하는 단계
+     - 모든 메모리를 체크 해야한다면 GC에게 부담이 되므로, JVM은 세대별로 메모리를 구분하여 GC를 따로 적용한다.
+
 2. Normal Deletion
+
+   - Marking으로 찾아낸 비참조 객체를 삭제하는 단계
+   - 삭제 후에 생기는 빈 공간은 Memory Allocator가 참조하고 있어서, 메모리를 할당해야 할 일이 생기면, 빈 공간을 찾아준다.
+
 3. Deletion with Compacting
 
+   - 빈 공간을 합치기 위해 메모리를 이동하는 것
+
+   - GC 수행 후 효율적이고 빠른 메모리 사용을 위해 Compaction을 고려할 수 있다.
+
+### Generational GC
+
+JVM의 성능을 향상할 수 있는 방법으로, 세대별로 메모리를 나누어 GC를 적용하는 방법을 채택했다. 
+
+![](../../img/heap.jpg)
+
+- Young Generation
+  - 객체가 생성되면 Eden 영역에 생성된다. Eden 영역이 꽉차게되면 **Minor GC**가 발생한다. Minor GC에서 살아남은 객체는 Survivor 영역 중 하나로 이동한다. Minor GC가 발생할때마다 살아남은 객체의 Age가 증가하는데, Age가 임계치를 넘은 객체는 Old 영역으로 이동하게 된다.
+- Old Generation
+  - Old 영역은 가득차게 되면 **Major GC**가 발생한다. Major GC는 보통 Minor GC보다 훨씬 느린데, 그 이유는 Young 영역을 제외한 모든 살아있는 객체를 검사해야하기 때문이다.
+- Permanent Generation
+  - Permanent 영역은 클래스와 메서드의 메타데이터(데이터에 관한 구조화된 데이터로, 다른 데이터를 설명해 주는 데이터)가 저장되는 공간이다.
+  - Permanent 영역의 크기가 모자르다면, GC는 적재된 클래스를 수집하게 된다. 이떄의 GC는 Full GC.
 
 
 
+### Garbage Collector Process
 
-
-
-
-
-
-
-
+1. 객체가 생성되면 Eden영역에 할당
+2. Eden 영역이 가득차게되면 **Minor GC**가 실행
+3. 이후에 Eden영역에 남아있는 객체는 Survivor영역 중 하나로 옮겨지고(**S0, S1 영역을 번갈아가며 사용**), Eden 영역은 완전히 비어있는 상태
+4. Minor GC의 반복, 이 때, 살아있는 객체들은 각자 Age를 가지고 있는데, **Minor GC가 발생할 때마다 살아있는 객체 각자의 Age가 1씩 증가**
+5. **Minor GC가 반복되고 객체들의 Age가 증가하여 임계값(threshold)을 넘어가면 Old 영역으로 이동**
+6. Old 영역(Tenured)이 가득차게 되면 **Major GC**가 발생
 
 
 

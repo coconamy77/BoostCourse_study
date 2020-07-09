@@ -1,4 +1,6 @@
-# Java Virtual Machine
+# Java Virtual Machine(자바 가상 머신)
+
+- 가상머신이란 프로그램을 실행하기 위해 물리적 머신과 유사한 머신을 SW로 구현한 것.
 
 - 운영체제 독립적, 자동으로 메모리 관리(gc), 안정적
 

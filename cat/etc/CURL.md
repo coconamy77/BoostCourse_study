@@ -13,3 +13,26 @@
 
 참고: [https://stackoverflow.com/questions/10628275/how-to-use-curl-with-django-csrf-tokens-and-post-requests](https://stackoverflow.com/questions/10628275/how-to-use-curl-with-django-csrf-tokens-and-post-requests)
 
+
+
+
+
+# Java로 리눅스 셸 실행하기
+
+- Runtime과 Process 이용
+
+```java
+public static void shell(String command) throws Exception {
+    Runtime runtime = Runtime.getRuntime();
+    Process process = runtime.exec(command);
+    InputStreamReader isr = new InputStreamReader(process.getInputStream());
+    BufferedReader br = new BufferedReader(isr);
+    
+    String line;
+    while((line = br.readLine()) != null) {
+        System.out.println(line);
+    }
+}
+
+```
+

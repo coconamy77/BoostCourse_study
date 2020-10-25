@@ -1,4 +1,4 @@
-# JavaScript
+# 웹 프로그래밍 - JavaScript
 ## 변수
 - var, let, const
 - 어떤 것을 사용하는가에 의해서 scope, 즉 변수의 유효번위가 달라진다.

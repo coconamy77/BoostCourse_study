@@ -47,7 +47,8 @@
 	2. properties - Project Facets -> Java 버전 변경 
 	3. 사용자 폴더 하위에 .m2 폴더 삭제
 	4. 이클립스내에서 프로젝트 삭제(disk에서는 삭제 x) 후 리빌드
-8. webapp/index.jsp 의 오류 해결하기, pom.xml에 추가
+8. webapp/index.jsp 의 오류 해결하기
+- pom.xml에 추가
 ```
 <dependency>
         <groupId>javax.servlet</groupId>
@@ -56,12 +57,12 @@
         <scope>provided</scope>
 </dependency>
 ```
-	- <scope>태그설명 : tomcat안에 서블릿 라이브러리가 있기 때문에 런타임때는 제외해도 된다.
-		- compile : 컴파일 할 때 필요. 테스트 및 런타임에도 클래스 패스에 포함됩니다. 		- scope 을 설정하지 않는 경우 기본값입니다.
-		- runtime : 런타임에 필요. JDBC 드라이버 등이 예가 됩니다. 컴파일 시에는 필요하지 않지만, 실행 시에 필요한 경우입니다.
-		- provided : 컴파일 시에 필요하지만, 실제 런타임 때에는 컨테이너 같은 것에서 제공되는 모듈. servlet, jsp api 등이 이에 해당. 배포 시 제외됩니다. 
-		- test : 테스트 코드를 컴파일 할 때 필요. 테스트 시 클래스 패스에 포함되며, 배포 시 제외됩니다.
-9. JSTL 라이브러리 추가, pom.xml
+- scope태그설명 : tomcat안에 서블릿 라이브러리가 있기 때문에 런타임때는 제외해도 된다.
+	- compile : 컴파일 할 때 필요. 테스트 및 런타임에도 클래스 패스에 포함됩니다. -> scope 을 설정하지 않는 경우 기본값입니다.
+	- runtime : 런타임에 필요. JDBC 드라이버 등이 예가 됩니다. 컴파일 시에는 필요하지 않지만, 실행 시에 필요한 경우입니다.
+	- test : 테스트 코드를 컴파일 할 때 필요. 테스트 시 클래스 패스에 포함되며, 배포 시 제외됩니다.
+9. JSTL 라이브러리 추가
+- pom.xml
 ```
 <dependency>
         <groupId>javax.servlet</groupId>
@@ -69,7 +70,8 @@
         <version>1.2</version>
 </dependency>
 ```
-10. EL 사용을 위해 다이나믹 웹 모듈 3.1이 되도록 설정, WEB-INF/web.xml
+10. EL 사용을 위해 다이나믹 웹 모듈 3.1이 되도록 설정
+- WEB-INF/web.xml
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 

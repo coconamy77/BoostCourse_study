@@ -23,7 +23,7 @@
 	- name : 프로젝트의 이름입니다.
 	- url : 프로젝트 사이트가 있다면 사이트 URL을 등록하는 것이 가능합니다.
 
-### Maven 프로젝트 시작하기
+## Maven 프로젝트 시작하기
 1. 이클립스 File -> New -> Project
 2. Maven Project 선택 -> Next(Archetype 선택) -> org.apache.maven.archetypes // maven-archetype-webapp 선택 -> Next
 	- archetype: 일종의 프로젝트 템플릿, 자동으로 여러 파일, 라이브러리를 셋팅해준다.

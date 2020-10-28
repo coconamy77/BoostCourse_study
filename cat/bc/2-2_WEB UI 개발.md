@@ -104,28 +104,4 @@ function ajax(data) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 참고 : [부스트코스](https://www.edwith.org/boostcourse-web/lecture/16700/)

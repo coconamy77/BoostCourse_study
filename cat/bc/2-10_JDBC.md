@@ -42,6 +42,7 @@ public static Connection getConnection() throws Exception{
 	String password = "smu";
 	Connection conn = null;
 	Class.forName("oracle.jdbc.driver.OracleDriver"); //2
+    //2 Class.forName은 해당객체를 메모리에 올리는 코드==new 생성자
 	conn = DriverManager.getConnection(url, user, password);//3-2
 	return conn;
 }

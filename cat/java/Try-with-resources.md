@@ -42,4 +42,4 @@ public int addTodo(TodoDto todo) {
 ```
 
 - 모든객체에서 close()를 호출하는것이 아니라 AutoCloseable상속받은 객체만 해당된다.
-  - Statement는 해당, PreparedStatement는 해당 안된다.
+  - Statement는 해당, PreparedStatement는 Statement를 상속받았다.

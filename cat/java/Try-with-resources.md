@@ -1,7 +1,7 @@
 ## Try-with-resources
 
 - java 버전 7부터 제공되는 기능
-- try문안에 변수를 넣어 close처리를 해준다.
+- try문안에 변수를 넣어 자동으로 close처리를 해준다.
 - 이전에는 try-catch-finally를 사용해서 처리해줬다.
 
 ```

@@ -67,9 +67,7 @@ class 자동차{
 
 
 
-## xml파일을 이용한 설정
-
-##### Bean
+## Bean
 
 - Spring IoC(Inversion of Control) 컨테이너에 의해 인스턴스화, 관리, 생성된다.
 
@@ -100,9 +98,87 @@ class 자동차{
   - 쓰기가 가능한 상태를 지닌 색체 : 쓰기가 가능한 상태가 많아서 동기화 비용이 객체 생성 비용보다 큼
   - 상태가 노출되지 않은 객체: 일부 제한적인 경우, 내부 상태를 외부에 노출하지 않는 빈을 참조하여 다른 의좀 객체와는 독립적으로 작업을 수행하는 의존 객체가 있다면 싱글톤보다는 비싱글이 적합
 
+##### XML을 이용한 설정
 
+- applicationContext.xml 생성 -> xml 형식의 빈 생성 파일 설정
 
+```java
+ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml"); //초기화
 
+UserBean userBean = (UserBean)ac.getBean("userBean");
+userBean.setName("jung");
+```
+
+#####  Java Config를 이용한 설정
+
+```java
+@Configuration
+public class ApplicationConfig {
+	@Bean
+	public Car car(Engine e) {
+		Car c = new Car();
+		c.setEngine(e);
+		return c;
+	}
+	@Bean
+	public Engine engine() {
+		return new Engine();
+	}
+}
+```
+
+```java
+public class Main {
+	public static void main(String[] args) {
+		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+		   
+		Car car = (Car)ac.getBean("car");
+        //Car car = (Car)ac.getBean(Car.class); 클래스를 넣어줘도 실행됨!
+        //Car을 반환하는 bean을 찾아서 실행
+		car.run();
+	}
+}
+```
+
+##### ApplicationContext는 파라미터를 받아들이지 않는 bean 생성 메서드를 먼저 다 실행 후에, 가지고 있는 객체를 파라미터로 받는 메서드를 실행해서 새로운 객체를 생성한다.
+
+```java
+@Configuration
+@ComponentScan("kr.or.connect.diexam01")//패키지 명을 꼭 적어준다.-> 이 패키지 안에서 알아서 생성
+public class ApplicationConfig2 {
+}
+```
+
+```java
+@Component
+public class Car {
+	@Autowired//이것때문에 setter가 필요 없다!
+	private Engine v8;
+	
+	public Car() {
+	}
+}
+```
+
+```java
+@Component
+public class Engine {
+	public Engine() {
+	}
+}
+```
+
+```java
+public class Main {
+
+	public static void main(String[] args) {
+		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig2.class);
+		   
+		Car car = ac.getBean(Car.class);
+		car.run();
+	}
+}
+```
 
 
 

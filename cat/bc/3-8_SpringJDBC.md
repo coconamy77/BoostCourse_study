@@ -108,6 +108,46 @@ this.jdbcTemplate.update("delete from actor where id = ?", Long.valueOf(actorId)
 
 
 
+### DTO(Data Transfer Object)
+
+- 계층(컨트롤러 뷰, 비지니스 계층, 퍼시스턴스 계증)간 데이터 교환을 위한 자바빈즈
+- 로직을 가지고 있지 않고, 순수한 데이터 객체
+- 필드, getter, setter를 가지고 있다.
+
+
+
+### DAO(Date Access Object)
+
+- 데이터를 조회, 조작하는 기능을 전담하도록 만든 객체
+- 보통 데이터베이스를 조작하는 기능을 전담하는 목적으로 만들어진다.
+
+
+
+### ConnectionPool
+
+- 비용이 많이 드는 DB연결에 대해 미리 커넥션을 여러개 맺어둔 것
+- 커넥션이 필요하면 커넥션 풀에게 빌려서 사용한 후 반납한다.
+- 커넥션을 제때 반납하지 않으면 사용할 커넥션이 없어서 프로그램이 늦어지거나 장애를 발생시킬 수 있다.
+
+
+
+### DataSource
+
+- DataSource는 커넥션 풀을 관리하는 목적으로 사용되는 객체
+- 커넥션을 얻어오고 반납하는 등의 작업을 수행
+
+
+
+### DB사용 순서
+
+1. 스프링 컨테이너인 ApplicationContext는 설정파일로 ApplicationConfig라는 클래스를 읽어들인다.
+2. ApplicationConfig에는 componentScanAnnotaition이 DAO 클래스를 찾도록 설정
+3. 찾은 DAO클래스는 Spring컨테이너가 관리
+4. Application Context는 DBConfig 클래스를 import하게 된다.
+5. DBConfig 클래스에서는 데이터 소스와 트랜잭션 매니저 객체를 생성
+6. DAO는 필드로 NamedParameterJdbcTemplate과 SimpleJdbcInsert를 가지게 된다.
+7. 
+
 
 
 

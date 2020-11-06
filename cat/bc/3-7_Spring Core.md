@@ -140,7 +140,7 @@ public class Main {
 }
 ```
 
-##### ApplicationContext는 파라미터를 받아들이지 않는 bean 생성 메서드를 먼저 다 실행 후에, 가지고 있는 객체를 파라미터로 받는 메서드를 실행해서 새로운 객체를 생성한다.
+##### ApplicationContext(IoC/DI컨테이너)는 파라미터를 받아들이지 않는 bean 생성 메서드를 먼저 다 실행 후에, 가지고 있는 객체를 파라미터로 받는 메서드를 실행해서 새로운 객체를 생성한다.
 
 ```java
 @Configuration
